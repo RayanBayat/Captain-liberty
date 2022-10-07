@@ -30,11 +30,12 @@ public class Weapen : MonoBehaviour
         anim = GetComponent<Animator>();
         shieldcollider = gameObject.transform.GetChild(3).GetComponent<BoxCollider2D>();
         shield = gameObject.transform.GetChild(3).gameObject;
+
     }
     void Update()
     {
        
-    if (shieldtimer <timetoParry)
+    if (shieldtimer <timetoParry && shieldtimer > 0)
     {
         reflect_on();
     }
@@ -44,6 +45,7 @@ public class Weapen : MonoBehaviour
     }
     Shield();
     Meleeattack(); 
+    Rangedattack();
     
 
     }
@@ -143,6 +145,15 @@ public class Weapen : MonoBehaviour
         //     attacknumber = 0;
         //     combotimer = 0;
         // }
+    }
+    void Rangedattack()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            attacknumber = 4;
+            anim.SetInteger("attacknumber",attacknumber);
+	        anim.SetTrigger("attack");
+        }
     }
     void Shoot()
     {

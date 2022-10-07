@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f943094b51cc4b7429d41e1599e7dd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapen: {fileID: 0}
   speed: 10
   destroy: 1
   rigidbody2Dbullet: {fileID: 3252909632581928038}

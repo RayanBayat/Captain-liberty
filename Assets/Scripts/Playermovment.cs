@@ -35,8 +35,8 @@ public class Playermovment : MonoBehaviour
    
     private void Update() {
         float horizontalInput = getHorizontalInput();
-        Rotate(horizontalInput);
-        if (!isAlive || weapen.stationarry)
+        
+        if (!isAlive)
         {
             if (isGrounded())
             {
@@ -44,6 +44,14 @@ public class Playermovment : MonoBehaviour
             }
 
             Respawn();
+            return;
+        }
+        else if (weapen.stationarry)
+        {
+            if (isGrounded())
+            {
+                stayinPlace();
+            }
             return;
         }
         // if (Input.GetKey(KeyCode.E))
@@ -56,12 +64,12 @@ public class Playermovment : MonoBehaviour
         //      live = true;
         //       animate.SetTrigger("spawn");
         // }
-
+        Rotate(horizontalInput);
         Jump();
         airSpeedY();
         Move(horizontalInput);
         
-        Death();
+        Death(false);
         
 
         
@@ -70,6 +78,7 @@ public class Playermovment : MonoBehaviour
     private void stayinPlace()
     {
         body.velocity = new Vector2(0,body.velocity.y);
+        
     }
     private void airSpeedY()
     {
@@ -122,7 +131,7 @@ public class Playermovment : MonoBehaviour
          if (other.tag == "FallDetector")
          {
             isAlive = false;
-            Death();
+            Death(false);
          }
          else if (other.tag == "Checkpoint")
          {
@@ -137,7 +146,7 @@ public class Playermovment : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    private void Death()
+    public void Death(bool dead)
     {
         if(mybodycollider.IsTouchingLayers(LayerMask.GetMask("Enemies")) || 
         mybodycollider.IsTouchingLayers(LayerMask.GetMask("Traps")))
@@ -145,12 +154,13 @@ public class Playermovment : MonoBehaviour
             isAlive = false;
             body.bodyType = RigidbodyType2D.Static;
         }
-        if (!isAlive)
+        if (!isAlive || dead)
         {
            
             animate.SetTrigger("dead");
             timeStamp = Time.time + spawncooldown;
-            
+            isAlive = false;
+            mybodycollider.enabled = false;
         }
        animate.SetBool("live",isAlive);
 
@@ -160,8 +170,8 @@ public class Playermovment : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q) && timeStamp<=Time.time)
         {
-       
-        transform.position = respawnpoint;
+            mybodycollider.enabled = true;
+            transform.position = respawnpoint;
          isAlive = true;
          body.bodyType = RigidbodyType2D.Dynamic;
          animate.SetBool("live",isAlive);

@@ -141,4 +141,4 @@ MonoBehaviour:
   destroy: 1
   rigidbody2Dbullet: {fileID: 3064977549914643816}
   impactEffect: {fileID: 1694703121462043513, guid: 04baad114dcb5404aa8681f95b51c053, type: 3}
-  parry_: {fileID: 1694703121462043513, guid: 1b18531ae1c14764dbd0d6d963a09356, type: 3}
+  parry: {fileID: 0}

@@ -8,7 +8,7 @@ public class Bounce_Leaf : MonoBehaviour
     private Animator anim;
     private bool down;
     private GameObject player;
-
+    
   
     // Start is called before the first frame update
      void Start()

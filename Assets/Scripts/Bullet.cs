@@ -5,7 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Weapen weapen;
+    //public Weapen weapen;
+    //public Health health;
     public float speed = 20f;
     public bool destroy = true;
     public Rigidbody2D rigidbody2Dbullet;
@@ -15,18 +16,19 @@ public class Bullet : MonoBehaviour
     {
         rigidbody2Dbullet.velocity = transform.right * speed;
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
        // Debug.Log(other.gameObject.layer);
-        if (other.gameObject.layer == 11 && other.tag == "reflect")
-        {
-            //transform.position = (new Vector3(0,0,0));
-            //transform.localRotation = Quaternion.Euler(transform.localRotation.x,180.0f,transform.localRotation.z);
+        if (other.gameObject.layer == 11 && other.tag == "reflect" 
+            && gameObject.layer == 10)
+        {          
             rigidbody2Dbullet.velocity = transform.right * -speed;
-          //   Instantiate(parry_,transform.position,transform.rotation);
-          //Instantiate(parry,transform.position,transform.rotation);   
-        
+        }
+        else if(other.gameObject.layer == 3 && gameObject.layer == 10)
+        {
+          other.gameObject.GetComponent<Health>().TakeDamage();
+          Destroy(gameObject);
+          Instantiate(impactEffect, transform.position, transform.rotation);
         }
         else
         {

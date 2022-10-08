@@ -10,7 +10,7 @@ public class Batpatrol : MonoBehaviour
     
     private int currentWaypointIndex = 0;
     private float lastxpos;
-
+   
     [SerializeField] private float speed = 4f;
 
     // Update is called once per frame

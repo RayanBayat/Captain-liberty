@@ -25055,7 +25055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -516.42444, y: 479.505}
+  m_AnchoredPosition: {x: -87, y: 221}
   m_SizeDelta: {x: 807.151, y: 48.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55831686
@@ -25094,7 +25094,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 50, y: 50}
+  m_CellSize: {x: 20, y: 20}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -25953,7 +25953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.433334, y: -26.9, z: -10}
+  m_LocalPosition: {x: 53.484974, y: -26.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26200,6 +26200,7 @@ MonoBehaviour:
   attackcd: 2
   range: 7.47
   heightrange: 0.4
+  maxHealth: 100
   bulleftpref: {fileID: 3252909632581928032, guid: ed754a343b3d35b48880488cebd56444, type: 3}
   damage: 4
   collid: {fileID: 589468254}
@@ -26241,7 +26242,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.16212368}
@@ -26356,12 +26357,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &594060661
 GameObject:
   m_ObjectHideFlags: 0
@@ -28329,7 +28330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025058939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.433334, y: -26.9, z: -10}
+  m_LocalPosition: {x: 53.484974, y: -26.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30572,16 +30573,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firepoint: {fileID: 1065272287}
   bulleftpref: {fileID: 3064977549914643822, guid: 8bc1185016087e047b5afd80a484ce27, type: 3}
-  shield: {fileID: 0}
-  shieldcollider: {fileID: 0}
   meleeattackcooldown: 3
   shieldtimer: 0
   timetoParry: 0.05
+  meleerange: 0.5
   combocooldown: 2
   stationarry: 0
   playerbullet:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  enemylayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &1669837303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30594,7 +30597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5d0c49db1bfd14fb8691ded30c7bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 10
   currentHealth: 0
   PM: {fileID: 1669837300}
   hpbar: {fileID: 55831686}

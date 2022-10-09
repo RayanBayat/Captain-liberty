@@ -20,23 +20,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Q) && currhp >= 0)
-        //{
-        //    gameObject.transform.GetChild(currhp).gameObject.SetActive(false);
-        //    currhp--;
-        //}
-        //else if(Input.GetKeyDown(KeyCode.K) && currhp < heart)
-        //{
-        //    currhp++;
-        //    gameObject.transform.GetChild(currhp).gameObject.SetActive(true);
-           
-        //}
-    }
-
-    public void decreaceHealth()
+    public void decreace()
     {
         if (currhp >= 0)
         {
@@ -44,7 +28,7 @@ public class HealthBar : MonoBehaviour
             currhp--;
         }
     }
-    public void increaceHealth()
+    public void increace()
     {
         if (currhp < heart)
         {

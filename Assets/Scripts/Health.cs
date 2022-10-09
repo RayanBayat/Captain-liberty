@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         currentHealth--;
-        hpbar.decreaceHealth();
+        hpbar.decreace();
         if(currentHealth > 0)
         {
             animate.SetTrigger("damagetake");

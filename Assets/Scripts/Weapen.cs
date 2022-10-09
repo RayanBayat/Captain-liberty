@@ -50,8 +50,17 @@ public class Weapen : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Flyingbat>()
-                .battakeDamage(damage);
+            if(enemy.name == "Bat")
+            {
+                enemy.GetComponent<Enemy>()
+                    .enemytakedamage(damage);
+            }
+            else if(enemy.name == "Goblin")
+            {
+                enemy.GetComponent<goblin>()
+                    .enemytakedamage(damage);
+            }
+
         }
     }
 

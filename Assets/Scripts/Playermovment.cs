@@ -110,7 +110,7 @@ public class Playermovment : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.Space) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
             body.velocity = new Vector2(body.velocity.x, jumpHeight);
             animate.SetTrigger("jump");

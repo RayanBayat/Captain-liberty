@@ -18,24 +18,29 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-       // Debug.Log(other.gameObject.layer);
-        if (other.gameObject.layer == 11 && other.tag == "reflect" 
+        // Debug.Log(other.gameObject.layer);
+        if (other.gameObject.layer == 11 && other.tag == "reflect"
             && gameObject.layer == 10)
-        {          
+        {
             rigidbody2Dbullet.velocity = transform.right * -speed;
+            gameObject.layer = 8;
+            return;
         }
-        else if(other.gameObject.layer == 3 && gameObject.layer == 10)
+        else if (other.gameObject.layer == 3 && gameObject.layer == 10)
         {
-          other.gameObject.GetComponent<Health>().TakeDamage();
-          Destroy(gameObject);
-          Instantiate(impactEffect, transform.position, transform.rotation);
+            other.gameObject.GetComponent<Health>().TakeDamage();
+
         }
-        else
+        else if (other.gameObject.layer == 9 && gameObject.layer == 8)
         {
-            Destroy(gameObject);
-            Instantiate(impactEffect,transform.position,transform.rotation);   
+            other.GetComponent<Enemy>().enemytakedamage(50);
+
         }
-        
+
+        Destroy(gameObject);
+        Instantiate(impactEffect, transform.position, transform.rotation);
+
+
 
     }
     // Update is called once per frame

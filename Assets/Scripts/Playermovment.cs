@@ -17,6 +17,7 @@ public class Playermovment : MonoBehaviour
     private Vector3 respawnpoint;
     private BoxCollider2D mybodycollider;
     private bool isAlive = true;
+    public bool knocked;
 
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float spawncooldown = 2f;
@@ -37,7 +38,14 @@ public class Playermovment : MonoBehaviour
     private void Update()
     {
         float horizontalInput = getHorizontalInput();
-
+        if (knocked)
+        {
+            if (isGrounded())
+            {
+                knocked = false;
+            }
+            return;
+        }
         if (!isAlive)
         {
             if (isGrounded())

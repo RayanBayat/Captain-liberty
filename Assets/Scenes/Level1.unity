@@ -27466,7 +27466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.013336, y: -16.22, z: -10}
+  m_LocalPosition: {x: 124.363335, y: -19.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30098,7 +30098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025058939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.013336, y: -16.22, z: -10}
+  m_LocalPosition: {x: 124.363335, y: -19.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32276,7 +32276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669837295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.48, y: -17.82, z: 0}
+  m_LocalPosition: {x: 123.83, y: -21.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32935,7 +32935,8 @@ GameObject:
   - component: {fileID: 2037471811}
   - component: {fileID: 2037471810}
   - component: {fileID: 2037471813}
-  m_Layer: 0
+  - component: {fileID: 2037471814}
+  m_Layer: 9
   m_Name: Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32982,7 +32983,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 16
   m_Sprite: {fileID: 931088176, guid: e23bc34e61ebbfc4aab3bfd9867030f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -33083,6 +33084,25 @@ MonoBehaviour:
   - {fileID: 2016582821}
   speed: 4
   standtime: 2
+--- !u!114 &2037471814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037471807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f1f5b1f034c024f9e384925abf0d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitbox: {fileID: 2037471809}
+  enemy:
+    serializedVersion: 2
+    m_Bits: 8
+  hitboxradius: 0.88
+  knockbackforce: 2
+  knockbackforceup: 1
 --- !u!1 &2084374034
 GameObject:
   m_ObjectHideFlags: 0

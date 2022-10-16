@@ -24,6 +24,8 @@ public class Playermovment : MonoBehaviour
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] private LayerMask groundlayer;
     [SerializeField] private Vector2 deadpos = new Vector2(10f, 10f);
+    private float knocktimercd = 1f ,knocktimerf;
+
 
     private void Awake()
     {
@@ -37,15 +39,6 @@ public class Playermovment : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = getHorizontalInput();
-        if (knocked)
-        {
-            if (isGrounded())
-            {
-                knocked = false;
-            }
-            return;
-        }
         if (!isAlive)
         {
             if (isGrounded())
@@ -56,7 +49,26 @@ public class Playermovment : MonoBehaviour
             Respawn();
             return;
         }
-        else if (weapen.stationarry)
+        Death(false);
+        float horizontalInput = getHorizontalInput();
+        if (knocked)
+        {
+ 
+            knocktimerf += Time.deltaTime;
+            if(knocktimerf >= knocktimercd)
+            {
+                if (isGrounded())
+                {
+                    knocked = false;
+                    knocktimerf = 0;
+                }
+                return;
+            }
+            return;
+        }
+       
+
+        if (weapen.stationarry)
         {
             if (isGrounded())
             {
@@ -69,7 +81,7 @@ public class Playermovment : MonoBehaviour
         airSpeedY();
         Move(horizontalInput);
 
-        Death(false);
+        
 
 
 

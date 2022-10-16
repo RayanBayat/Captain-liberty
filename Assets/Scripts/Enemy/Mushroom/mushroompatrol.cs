@@ -12,6 +12,7 @@ public class mushroompatrol : MonoBehaviour
     private float lastxpos, wait = 0;
     private bool running = true;
 
+
     [SerializeField] private float speed = 4f, standtime = 2f;
 
     // Update is called once per frame
@@ -22,11 +23,13 @@ public class mushroompatrol : MonoBehaviour
     }
     void Update()
     {
+
         animate.SetBool("run", running);
         if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < 0.1f)
         {
             if (standtime > wait)
             {
+                Direction();
                 running = false;
                 wait += Time.deltaTime;
                 animate.SetBool("inCombat", true);

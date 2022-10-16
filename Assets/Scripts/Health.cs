@@ -18,16 +18,19 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage()
     {
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        currentHealth--;
-        hpbar.decreace();
-        if(currentHealth > 0)
+        if (currentHealth > 0)
         {
-            animate.SetTrigger("damagetake");
-        }
-        else
-        {
-            PM.Death(true);
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+            currentHealth--;
+            hpbar.decreace();
+            if (currentHealth > 0)
+            {
+                animate.SetTrigger("damagetake");
+            }
+            else
+            {
+                PM.Death(true);
+            }
         }
     }
 }

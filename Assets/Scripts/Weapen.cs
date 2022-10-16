@@ -60,6 +60,11 @@ public class Weapen : MonoBehaviour
                 enemy.GetComponent<goblin>()
                     .enemytakedamage(damage);
             }
+            else if(enemy.name == "Mushroom")
+            {
+                enemy.GetComponent<mushroom>()
+                    .enemytakedamage(damage);
+            }
 
         }
     }

@@ -33,4 +33,9 @@ public class Health : MonoBehaviour
             }
         }
     }
+    public void respawn()
+    {
+        currentHealth = maxHealth;
+        hpbar.restart();
+    }
 }

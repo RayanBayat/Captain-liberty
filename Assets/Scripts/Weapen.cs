@@ -10,7 +10,7 @@ public class Weapen : MonoBehaviour
     private GameObject shield;
 
     private BoxCollider2D shieldcollider;
-
+    [SerializeField] private AudioSource meleeattacksound;
     private float attacktimer = 20f;
     public float meleeattackcooldown = 1;
     private float combotimer = 0f;
@@ -161,7 +161,7 @@ public class Weapen : MonoBehaviour
 
                 }
 
-
+                meleeattacksound.Play();
             }
 
 

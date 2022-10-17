@@ -5,7 +5,7 @@ using UnityEngine;
 public class mushroom : MonoBehaviour
 {
     public mushroomAI enemy;
-    public int maxHealth = 100;
+    public int maxHealth = 700;
     private int currenthp;
     bool enemydead = false;
     void Start()

@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Bounce_Leaf : MonoBehaviour
 {
+
     private BoxCollider2D collid;
     private Animator anim;
     private bool down;
     private GameObject player;
-    
-  
+    [SerializeField] private AudioSource bounce;
+
+
     // Start is called before the first frame update
-     void Start()
+    void Start()
     {
         collid = GetComponent<BoxCollider2D>();
          anim = GetComponent<Animator>();
@@ -30,6 +32,7 @@ public class Bounce_Leaf : MonoBehaviour
         {
          // Physics2D.IgnoreCollision(collision.collider,collid,false);
            anim.SetTrigger("bounce");
+            bounce.Play();
            down = true;
           collid.enabled = false;
           StartCoroutine(EnableBox(4.0F));

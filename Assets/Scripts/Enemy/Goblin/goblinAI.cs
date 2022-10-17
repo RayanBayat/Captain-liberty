@@ -12,6 +12,7 @@ public class goblinAI : MonoBehaviour
     [SerializeField] private float swordrange;
     [SerializeField] private float swordheightrange;
     [SerializeField] private float sworddistance;
+    [SerializeField] private AudioSource bomblaunch;
     public GameObject bulleftpref;
     [SerializeField] private BoxCollider2D collid;
     [SerializeField] private LayerMask Playerlayer;
@@ -144,6 +145,7 @@ public class goblinAI : MonoBehaviour
     void Shoot()
     {
         Instantiate(bulleftpref, firepoint.position, firepoint.rotation);
+        bomblaunch.Play();
         bulleftpref.layer = LayerMask.NameToLayer("Enemiesbullets");
 
     }

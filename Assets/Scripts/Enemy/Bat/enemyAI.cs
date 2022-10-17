@@ -15,6 +15,7 @@ public class enemyAI : MonoBehaviour
     [SerializeField] private LayerMask Playerlayer;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask groundlayer;
+    [SerializeField] private AudioSource batattack;
     private Animator animate;
     public Transform firepoint;
     private float attacktimer = 20f;
@@ -37,6 +38,7 @@ public class enemyAI : MonoBehaviour
                 attacktimer = 0;
                 //attack1 is ranged attack
                 animate.SetTrigger("attack1");
+                batattack.Play();
             }
         }
         //stop moving while attacking player

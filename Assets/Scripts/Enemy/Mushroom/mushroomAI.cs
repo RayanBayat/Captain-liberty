@@ -17,9 +17,11 @@ public class mushroomAI : MonoBehaviour
     private GameObject player;
     private bool isHit = false, inCombat = false;
     private Animator animate;
+    private bool attacking;
     private mushroompatrol mushroompatrol;
     [SerializeField] private LayerMask groundlayer;
     [SerializeField] private LayerMask Playerlayer;
+    [SerializeField] private AudioSource mushroomattack;
     //private bool hitCooldown = false;
     private int test = 1;
     void Start()
@@ -51,7 +53,7 @@ public class mushroomAI : MonoBehaviour
                 //knockback();
                 animate.SetTrigger("attack1");
                 attacktimer = 0;
-
+               
 
                 //attack1 is ranged attack
 
@@ -70,13 +72,20 @@ public class mushroomAI : MonoBehaviour
     }
     public void knockback()
     {
+
         isHit = Physics2D.OverlapCircle(hitbox.position, hitboxradius, Playerlayer);
+        mushroomattack.Play();
         // Debug.Log("hit " + isHit);
         if (isHit == true)
         {
             var direction = transform.right + Vector3.up;
             player.GetComponent<Playermovment>().knocked = true;
             player.GetComponent<Rigidbody2D>().AddForce(direction * knockbackforce, ForceMode2D.Impulse);
+            if(!wasshielded())
+            {
+                player.GetComponent<Health>().TakeDamage();
+            }
+           
             // Vector2 knockbackdirection = new Vector2(player.transform.position.x - transform.position.x, 0);
             // player.GetComponent<Rigidbody2D>().velocity = new Vector2(knockbackdirection.x, knockbackforceup) * knockbackforce;
         }
@@ -101,7 +110,11 @@ public class mushroomAI : MonoBehaviour
     }
     public void hurtanim()
     {
-        animate.SetTrigger("hurt");
+        if(!attacking)
+        {
+            animate.SetTrigger("hurt");
+        }
+        
     }
     public void deadanim()
     {
@@ -126,4 +139,26 @@ public class mushroomAI : MonoBehaviour
             transform.localRotation = Quaternion.Euler(transform.localRotation.x, 0f, transform.localRotation.z);
         }
     }
+    private bool wasshielded()
+    {
+        float shield_to_mob = Mathf.Abs(player.transform.GetChild(3).gameObject.transform.position.x - transform.position.x);
+        float player_to_mob = Mathf.Abs(player.transform.GetChild(1).gameObject.transform.position.x - transform.position.x);
+        if (player.transform.GetChild(3).gameObject.GetComponent<BoxCollider2D>().enabled)
+        {
+            if (shield_to_mob < player_to_mob)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void isattackin()
+    {
+        attacking = true;
+    }
+    public void isnotattacking()
+    {
+        attacking = false;
+    }
+
 }

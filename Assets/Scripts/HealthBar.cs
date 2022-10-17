@@ -12,9 +12,9 @@ public class HealthBar : MonoBehaviour
     public GameObject prefab;
     void Start()
     {
-        heart = health.maxHealth-1;
+        heart = health.maxHealth - 1;
         currhp = heart;
-        for (int i = 0;i <= heart; i++)
+        for (int i = 0; i <= heart; i++)
         {
             Instantiate(prefab, parentObject);
         }
@@ -35,6 +35,14 @@ public class HealthBar : MonoBehaviour
             currhp++;
             gameObject.transform.GetChild(currhp).gameObject.SetActive(true);
 
+        }
+    }
+    public void restart()
+    {
+        currhp = heart;
+        for (int i = 0; i <= heart; i++)
+        {
+            gameObject.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
 }

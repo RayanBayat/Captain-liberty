@@ -6,8 +6,11 @@ public class Bulletexploation : MonoBehaviour
 {
     // Start is called before the first frame update
     //Even parry uses this script
-     void Destroyobject()
+
+    void Destroyobject()
     {
+
         Destroy(gameObject);
+        
     }
 }

@@ -9,7 +9,7 @@ public class Playermovment : MonoBehaviour
     private GameObject myfeetobject;
     private BoxCollider2D myfeetcollider;
     private Animator animate;
-
+    public Health health;
     public Weapen weapen;
     private bool grounded;
 
@@ -24,6 +24,7 @@ public class Playermovment : MonoBehaviour
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] private LayerMask groundlayer;
     [SerializeField] private Vector2 deadpos = new Vector2(10f, 10f);
+    
     private float knocktimercd = 1f ,knocktimerf;
 
 
@@ -189,7 +190,7 @@ public class Playermovment : MonoBehaviour
             body.bodyType = RigidbodyType2D.Dynamic;
             animate.SetBool("live", isAlive);
             animate.SetTrigger("spawn");
-
+            health.respawn();
         }
 
     }

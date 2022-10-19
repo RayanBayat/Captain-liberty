@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapen : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Weapen : MonoBehaviour
     public bool stationarry = false;
     private Animator anim;
     [SerializeField] private LayerMask playerbullet, enemylayer;
+    [SerializeField] private Text ranged_attack;
+    private int ranged_attack_n = 0;
 
     void Start()
     {
@@ -40,7 +43,7 @@ public class Weapen : MonoBehaviour
         Shield();
         Meleeattack();
         Rangedattack();
-        
+        Buyslash();
 
     }
 
@@ -169,11 +172,19 @@ public class Weapen : MonoBehaviour
     }
     void Rangedattack()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            attacknumber = 4;
-            anim.SetInteger("attacknumber", attacknumber);
-            anim.SetTrigger("attack");
+            if (ranged_attack_n > 0)
+            {
+                attacknumber = 4;
+                anim.SetInteger("attacknumber", attacknumber);
+                anim.SetTrigger("attack");
+                ranged_attack_n--;
+                ranged_attack.text = "X" + ranged_attack_n;
+            }
+            
+
         }
     }
     void Shoot()
@@ -182,4 +193,26 @@ public class Weapen : MonoBehaviour
         bulleftpref.layer = LayerMask.NameToLayer("Playerbullets");
         attacknumber = 0;
     }
-}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "rangedpickup")
+        {
+            Destroy(other.gameObject);
+           // ranged_attack.Play();
+            ranged_attack_n++;
+            ranged_attack.text = "X" + ranged_attack_n;
+           
+        }
+    }
+    private void Buyslash()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (gameObject.GetComponent<Playermovment>().buy(10))
+            {
+                ranged_attack_n++;
+                ranged_attack.text = "X" + ranged_attack_n;
+            }
+        }
+    }
+ }

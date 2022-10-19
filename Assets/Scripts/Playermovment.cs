@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Playermovment : MonoBehaviour
 {
@@ -24,7 +25,10 @@ public class Playermovment : MonoBehaviour
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] private LayerMask groundlayer;
     [SerializeField] private Vector2 deadpos = new Vector2(10f, 10f);
-    
+    [SerializeField] private AudioSource coincollect;
+    [SerializeField] private Text cointext;
+    private int coinscollected = 0;
+
     private float knocktimercd = 1f ,knocktimerf;
 
 
@@ -152,6 +156,13 @@ public class Playermovment : MonoBehaviour
             respawnpoint = transform.position;
             other.GetComponent<Collider2D>().enabled = false;
         }
+        else if( other.tag == "coin")
+        {
+            Destroy(other.gameObject);
+            coincollect.Play();
+            coinscollected++;
+            cointext.text = "X" + coinscollected;
+        }
     }
 
     private bool isGrounded()
@@ -193,5 +204,18 @@ public class Playermovment : MonoBehaviour
             health.respawn();
         }
 
+    }
+    public bool buy(int coin)
+    {
+        if (coinscollected - coin < 0)
+        {
+            return false;
+        }
+        else
+        {
+            coinscollected = coinscollected - coin;
+            cointext.text = "X" + coinscollected;
+            return true;
+        }
     }
 }

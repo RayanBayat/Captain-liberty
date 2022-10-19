@@ -10,7 +10,7 @@ public class bombexplode : MonoBehaviour
     [SerializeField] private AudioSource explodesound;
     void Destroyobject()
     {
-        explodesound.Play();
+        
         Destroy(gameObject);
 
     }

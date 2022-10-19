@@ -33,7 +33,22 @@ public class Bullet : MonoBehaviour
         }
         else if (other.gameObject.layer == 9 && gameObject.layer == 8)
         {
-            other.GetComponent<Enemy>().enemytakedamage(50);
+            if (other.name == "Bat")
+            {
+                other.GetComponent<Enemy>()
+                    .enemytakedamage(1000);
+            }
+            else if (other.name == "Goblin")
+            {
+                other.GetComponent<goblin>()
+                    .enemytakedamage(1000);
+            }
+            else if (other.name == "Mushroom")
+            {
+                other.GetComponent<mushroom>()
+                    .enemytakedamage(1000);
+            }
+            //other.GetComponent<Enemy>().enemytakedamage(50);
 
         }
 

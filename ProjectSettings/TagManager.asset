@@ -12,6 +12,8 @@ TagManager:
   - Enemy
   - EnemiesBullets
   - reflect
+  - coin
+  - rangedpickup
   layers:
   - Default
   - TransparentFX
@@ -26,8 +28,8 @@ TagManager:
   - Enemiesbullets
   - Playershield
   - DeadEnemy
-  - 
-  - 
+  - coins
+  - enviroment
   - 
   - 
   - 

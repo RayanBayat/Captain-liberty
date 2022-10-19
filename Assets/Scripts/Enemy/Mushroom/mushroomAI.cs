@@ -33,7 +33,10 @@ public class mushroomAI : MonoBehaviour
     void Update()
     {
         //    player.GetComponent<Playermovment>().knocked = false;
-        mushroompatrol.enabled = !inCombat;
+        //if (mushroompatrol != null)
+        //{
+        //    mushroompatrol.enabled = !inCombat;
+        //}
     }
 
     public void AI()

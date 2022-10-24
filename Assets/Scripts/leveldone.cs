@@ -12,7 +12,7 @@ public class leveldone : MonoBehaviour
     }
     public void nextlevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex +1 <4)
+        if(SceneManager.GetActiveScene().buildIndex +1 <3)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

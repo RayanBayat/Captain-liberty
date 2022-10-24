@@ -186,6 +186,7 @@ public class Playermovment : MonoBehaviour
             timeStamp = Time.time + spawncooldown;
             isAlive = false;
             mybodycollider.enabled = false;
+            gameObject.layer = 16;
         }
         animate.SetBool("live", isAlive);
 
@@ -193,7 +194,7 @@ public class Playermovment : MonoBehaviour
 
     private void Respawn()
     {
-        if (Input.GetKey(KeyCode.Q) && timeStamp <= Time.time)
+        if (Input.GetKey(KeyCode.Q) && timeStamp <= Time.time || timeStamp > spawncooldown * 2)
         {
             mybodycollider.enabled = true;
             transform.position = respawnpoint;
@@ -202,6 +203,7 @@ public class Playermovment : MonoBehaviour
             animate.SetBool("live", isAlive);
             animate.SetTrigger("spawn");
             health.respawn();
+            gameObject.layer = 3;
         }
 
     }

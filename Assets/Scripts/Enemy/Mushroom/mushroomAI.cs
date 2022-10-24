@@ -39,6 +39,14 @@ public class mushroomAI : MonoBehaviour
         //}
     }
 
+    public void animationstop()
+    {
+        mushroompatrol.enabled = false;
+    }
+    public void animationstart()
+    {
+        mushroompatrol.enabled = true;
+    }
     public void AI()
     {
 
@@ -70,7 +78,11 @@ public class mushroomAI : MonoBehaviour
         //stop moving while attacking player
         if (mushroompatrol != null)
         {
-            mushroompatrol.enabled = !inCombat;
+            if (!attacking)
+            {
+                mushroompatrol.enabled = !inCombat;
+            }
+
         }
     }
     public void knockback()

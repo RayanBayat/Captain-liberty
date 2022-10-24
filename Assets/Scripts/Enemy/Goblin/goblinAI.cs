@@ -13,6 +13,7 @@ public class goblinAI : MonoBehaviour
     [SerializeField] private float swordheightrange;
     [SerializeField] private float sworddistance;
     [SerializeField] private AudioSource bomblaunch;
+    [SerializeField] private AudioSource meleesound;
     public GameObject bulleftpref;
     [SerializeField] private BoxCollider2D collid;
     [SerializeField] private LayerMask Playerlayer;
@@ -85,6 +86,7 @@ public class goblinAI : MonoBehaviour
     }
     void Sword(int damage)
     {
+        meleesound.Play();
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(firepoint.position, meleerange, Playerlayer);
 
         foreach (Collider2D player in hitPlayer)
